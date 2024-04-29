@@ -4,29 +4,33 @@ end
 class DoubleLinkedList
   class Node
     attr_accessor :value, :prev, :next
-    
+
     def initialize(value, prev, next_node)
-      @value, @prev, @next = value, prev, next_node
+      @value = value
+      @prev = prev
+      @next = next_node
     end
   end
-  
+
   attr_reader :size
-  
+
   def initialize
     @size = 0
   end
-  
+
   def empty?
-    @size == 0
+    @size.zero?
   end
-  
+
   def head
     raise EmptyListError unless @head
+
     @head.value
   end
-  
+
   def tail
     raise EmptyListError unless @tail
+
     @tail.value
   end
 
@@ -79,7 +83,7 @@ class DoubleLinkedList
     @size -= 1
     node.value
   end
-  
+
   def each
     cursor = @head
     while cursor
@@ -87,7 +91,7 @@ class DoubleLinkedList
       cursor = cursor.next
     end
   end
-  
+
   def reverse_each
     cursor = @tail
     while cursor
