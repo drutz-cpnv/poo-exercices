@@ -1,0 +1,4 @@
+helloworld
+magic
+abs
+manger
