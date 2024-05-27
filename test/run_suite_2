@@ -1,0 +1,6 @@
+./mini_send_mail me@example.com good@cpnv.ch GoodOne clean_body.txt
+./mini_send_mail me@example.com okay@vd.ch GoodOneToo clean_body.txt
+./mini_send_mail me@example.com good@cpnv.ch GoodOne clean_body.txt
+./mini_send_mail me@example.com okay@vd.ch GoodOneToo clean_body.txt
+./mini_send_mail me@example.com good@cpnv.ch GoodOne clean_body.txt
+./mini_send_mail me@example.com okay@vd.ch GoodOneToo clean_body.txt
