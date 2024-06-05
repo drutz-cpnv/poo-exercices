@@ -6,6 +6,8 @@ require_relative 'src/security/policy'
 require_relative 'src/security/mail_guard'
 require_relative 'src/mail_server'
 require_relative 'src/server_adapter'
+require_relative 'src/event_dispatcher'
+require_relative 'src/event_subscriber'
 
 port = (ARGV[0] || 3325).to_i
 
@@ -19,6 +21,12 @@ policies = [
     'regex' => "@(cpnv.ch|vd.ch)$"
   }),
 ]
+
+event_sub = Event::MailEventSubscriber.new Logging::StdoutLogger.new
+
+dispatcher = Event::EventDispatcher.new [event_sub]
+
+exit 0
 
 guard = Guard::MailGuard.new policies
 
