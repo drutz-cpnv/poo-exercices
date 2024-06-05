@@ -1,61 +1,21 @@
-# frozen_string_literal: true
-require_relative 'node'
+#
+# POO2: Ex3
+# Pascal Hurni May 2016
+# 
 
-BASE = 'a'.ord
+require './word_search_tree'
 
-class WordSearchTree
+# Read the passed or default file containing function names
+functions_array = File.readlines(ARGV[0] || 'functions.txt', chomp: true)
 
-  def initialize
-    @root = Node.new
-    @root.init
-    @tb = []
-  end
+# Insert them in the tree
+functions_tree = WordSearchTree.new
+functions_array.each {|name| functions_tree.insert(name) }
 
-  def insert(word)
-    current_node = @root
-    @tb.push(word.strip)
-
-    word.each_char do |char|
-      next if char == "\n"
-      index = char.ord - BASE
-      # current_node = current_node.get_letter_node(char)
-      # current_node.insert(char)
-      current_node = current_node.get_letter_node(index)
-      current_node.insert(index)
-    end
-    current_node.is_word = true
-
-  end
-
-  def search(word)
-    current_node = @root
-    word.each_char do |char|
-      index = char.ord - BASE
-      current_node = current_node.get_letter_node(index)
-      # current_node = current_node.get_letter_node(char)
-      if current_node.is_word
-        return true
-      end
-      if current_node.empty?
-        break
-      end
-    end
-    current_node.word?
-  end
-
-  def search_tb(word)
-    !@tb.select { |w| word === w }.empty?
-  end
-
+# Interact with the user
+loop do
+  print "Please, type a function name: "
+  name = gets.chomp
+  break if name.empty?
+  puts functions_tree.include?(name) ? 'Yes, this is a valid one' : 'Sorry, not found'
 end
-
-search = WordSearchTree.new
-
-File.open('functions.txt').each do |line|
-  search.insert(line)
-end
-
-p search.search("hashforediteisrbacroleassignmentpath")
-p search.search_tb("hashforediteisrbacroleassignmentpath")
-p search.search("helloworld")
-p search.search_tb("helloworld")
