@@ -5,12 +5,8 @@
 
 require './word_search_tree'
 
-# Read the passed or default file containing function names
-functions_array = File.readlines(ARGV[0] || 'functions.txt', chomp: true)
-
 # Insert them in the tree
 functions_tree = WordSearchTree.new
-functions_array.each {|name| functions_tree.insert(name) }
 
 # Interact with the user
 loop do

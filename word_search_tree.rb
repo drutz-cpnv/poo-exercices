@@ -46,7 +46,23 @@ class WordSearchTree
   
   def include?(word)
     node = @root.move_to(word.dup)
-    node && node.word?
+    node&.word?
   end
-  
+  x 
+end
+
+class Words < WordSearchTree
+
+
+  class Node < WordSearchTree::Node
+
+  end
+
+  def browse(visitor)
+    @children = @root.children
+    if child = @children["a".ord-BASE]
+      child.move_to(rest)
+    end
+  end
+
 end
