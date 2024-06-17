@@ -1,0 +1,12 @@
+GEM
+  specs:
+    zeitwerk (2.6.15)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  zeitwerk
+
+BUNDLED WITH
+   2.1.4

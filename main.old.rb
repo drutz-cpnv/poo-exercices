@@ -8,32 +8,7 @@
 #  2. On puisse facilement rajouter une "source" de donnée (autre que http et fichier)
 #  3. On puisse facilement rajouter un "check"
 
-require 'zeitwerk'
-loader = Zeitwerk::Loader.new
-loader.push_dir(File.join(__dir__, '/src'))
-loader.setup
-
 source = ARGV[0]
-
-
-sources = [
-  [
-    /^http:\/\//,
-    HTTPSource.new
-  ],
-  [
-    /^htp:\/\//,
-
-  ]
-]
-
-
-list = StudentList.create_from_data_sources(sources, source)
-
-puts list.check.issues
-
-
-
 
 if source.start_with?('http://')
   require 'net/http'
